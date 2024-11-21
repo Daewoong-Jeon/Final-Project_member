@@ -47,6 +47,18 @@ public class Member {
     }
 
     //<<< Clean Arch / Port Method
+    public void chargeRentalPoint(
+            ChargeRentalPointCommand chargeRentalPointCommand
+    ) {
+        //implement business logic here:
+
+        RentalPointCharged rentalPointCharged = new RentalPointCharged(this);
+        rentalPointCharged.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+
+    //<<< Clean Arch / Port Method
     public static void decreaseRentalPoint(
         RentalStatusUpdated rentalStatusUpdated
     ) {
