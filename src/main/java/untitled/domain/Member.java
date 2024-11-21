@@ -35,8 +35,8 @@ public class Member {
         );
         rentalPointIncreased.publishAfterCommit();
 
-        RentalPointCharged rentalPointCharged = new RentalPointCharged(this);
-        rentalPointCharged.publishAfterCommit();
+        LackOfPoints lackOfPoints = new LackOfPoints(this);
+        lackOfPoints.publishAfterCommit();
     }
 
     public static MemberRepository repository() {
@@ -78,22 +78,25 @@ public class Member {
          lackOfPoints.publishAfterCommit();
         */
 
-        /** Example 2:  finding and process
+        // Example 2:  finding and process
         
-        repository().findById(rentalStatusUpdated.get???()).ifPresent(member->{
-            
-            member // do something
-            repository().save(member);
+        repository().findById(rentalStatusUpdated.getMemberId()).ifPresent(member->{
+            if (member.getRentalPoint() - rentalStatusUpdated.getCost() >= 0) {
 
-            RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(member);
-            rentalPointDecreased.publishAfterCommit();
+                member.setRentalPoint(member.getRentalPoint() - rentalStatusUpdated.getCost());
+                repository().save(member);
 
-             LackOfPoints lackOfPoints = new LackOfPoints(member);
-             lackOfPoints.publishAfterCommit();
+                RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(member);
+                rentalPointDecreased.publishAfterCommit();
 
+            } else {
+
+                LackOfPoints lackOfPoints = new LackOfPoints(member);
+                lackOfPoints.publishAfterCommit();
+
+            }
 
          });
-        */
 
     }
 
@@ -112,18 +115,17 @@ public class Member {
         rentalPointIncreased.publishAfterCommit();
         */
 
-        /** Example 2:  finding and process
+        // Example 2:  finding and process
         
-        repository().findById(availableStatusUpdated.get???()).ifPresent(member->{
-            
-            member // do something
+        repository().findById(availableStatusUpdated.getMemberId()).ifPresent(member->{
+
+            member.setRentalPoint(member.getRentalPoint() + availableStatusUpdated.getCost());
             repository().save(member);
 
             RentalPointIncreased rentalPointIncreased = new RentalPointIncreased(member);
             rentalPointIncreased.publishAfterCommit();
 
          });
-        */
 
     }
     //>>> Clean Arch / Port Method
