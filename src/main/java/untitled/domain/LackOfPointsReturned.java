@@ -9,17 +9,17 @@ import untitled.infra.AbstractEvent;
 //<<< DDD / Domain Event
 @Data
 @ToString
-public class LackOfPoints extends AbstractEvent {
+public class LackOfPointsReturned extends AbstractEvent {
 
     private String id;
     private Integer rentalPoint;
     private String bookId;
 
-    public LackOfPoints(Member aggregate) {
+    public LackOfPointsReturned(Member aggregate) {
         super(aggregate);
     }
 
-    public LackOfPoints() {
+    public LackOfPointsReturned() {
         super();
     }
 }

@@ -35,8 +35,10 @@ public class Member {
 //        );
 //        rentalPointIncreased.publishAfterCommit();
 //
-//        LackOfPoints lackOfPoints = new LackOfPoints(this);
-//        lackOfPoints.publishAfterCommit();
+//        LackOfPointsReturned lackOfPointsReturned = new LackOfPointsReturned(
+//                this
+//        );
+//        lackOfPointsReturned.publishAfterCommit();
     }
 
     public static MemberRepository repository() {
@@ -72,8 +74,8 @@ public class Member {
         RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(member);
         rentalPointDecreased.publishAfterCommit();
 
-         LackOfPoints lackOfPoints = new LackOfPoints(member);
-         lackOfPoints.publishAfterCommit();
+         LackOfPointsReturned lackOfPointsReturned = new LackOfPointsReturned(member);
+         lackOfPointsReturned.publishAfterCommit();
         */
 
         // Example 2:  finding and process
@@ -89,14 +91,14 @@ public class Member {
 
             } else {
 
-                LackOfPoints lackOfPoints = new LackOfPoints();
-                lackOfPoints.setId(member.getId());
-                lackOfPoints.setRentalPoint(member.getRentalPoint());
-                lackOfPoints.setBookId(rentalStatusUpdated.getId());
-                lackOfPoints.publishAfterCommit();
+                LackOfPointsReturned lackOfPointsReturned = new LackOfPointsReturned();
+                lackOfPointsReturned.setId(member.getId());
+                lackOfPointsReturned.setRentalPoint(member.getRentalPoint());
+                lackOfPointsReturned.setBookId(rentalStatusUpdated.getId());
+                lackOfPointsReturned.publishAfterCommit();
 
-//                LackOfPoints lackOfPoints = new LackOfPoints(member);
-//                lackOfPoints.publishAfterCommit();
+//                LackOfPointsReturned lackOfPointsReturned = new LackOfPointsReturned(member);
+//                lackOfPointsReturned.publishAfterCommit();
 
             }
 
