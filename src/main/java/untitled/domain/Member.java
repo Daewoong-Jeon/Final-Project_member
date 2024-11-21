@@ -54,6 +54,9 @@ public class Member {
 
         RentalPointCharged rentalPointCharged = new RentalPointCharged(this);
         rentalPointCharged.publishAfterCommit();
+
+        LackOfPoints lackOfPoints = new LackOfPoints(this);
+        lackOfPoints.publishAfterCommit();
     }
 
     //>>> Clean Arch / Port Method
@@ -70,6 +73,9 @@ public class Member {
 
         RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(member);
         rentalPointDecreased.publishAfterCommit();
+
+         LackOfPoints lackOfPoints = new LackOfPoints(member);
+         lackOfPoints.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -81,6 +87,10 @@ public class Member {
 
             RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(member);
             rentalPointDecreased.publishAfterCommit();
+
+             LackOfPoints lackOfPoints = new LackOfPoints(member);
+             lackOfPoints.publishAfterCommit();
+
 
          });
         */
