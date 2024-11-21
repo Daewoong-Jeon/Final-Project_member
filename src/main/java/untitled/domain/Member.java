@@ -55,8 +55,6 @@ public class Member {
         RentalPointCharged rentalPointCharged = new RentalPointCharged(this);
         rentalPointCharged.publishAfterCommit();
 
-        LackOfPoints lackOfPoints = new LackOfPoints(this);
-        lackOfPoints.publishAfterCommit();
     }
 
     //>>> Clean Arch / Port Method
@@ -91,8 +89,14 @@ public class Member {
 
             } else {
 
-                LackOfPoints lackOfPoints = new LackOfPoints(member);
+                LackOfPoints lackOfPoints = new LackOfPoints();
+                lackOfPoints.setId(member.getId());
+                lackOfPoints.setRentalPoint(member.getRentalPoint());
+                lackOfPoints.setBookId(rentalStatusUpdated.getId());
                 lackOfPoints.publishAfterCommit();
+
+//                LackOfPoints lackOfPoints = new LackOfPoints(member);
+//                lackOfPoints.publishAfterCommit();
 
             }
 
