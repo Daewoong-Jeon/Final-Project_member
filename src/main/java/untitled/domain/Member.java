@@ -25,18 +25,18 @@ public class Member {
 
     @PostPersist
     public void onPostPersist() {
-        RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(
-            this
-        );
-        rentalPointDecreased.publishAfterCommit();
-
-        RentalPointIncreased rentalPointIncreased = new RentalPointIncreased(
-            this
-        );
-        rentalPointIncreased.publishAfterCommit();
-
-        LackOfPoints lackOfPoints = new LackOfPoints(this);
-        lackOfPoints.publishAfterCommit();
+//        RentalPointDecreased rentalPointDecreased = new RentalPointDecreased(
+//            this
+//        );
+//        rentalPointDecreased.publishAfterCommit();
+//
+//        RentalPointIncreased rentalPointIncreased = new RentalPointIncreased(
+//            this
+//        );
+//        rentalPointIncreased.publishAfterCommit();
+//
+//        LackOfPoints lackOfPoints = new LackOfPoints(this);
+//        lackOfPoints.publishAfterCommit();
     }
 
     public static MemberRepository repository() {
