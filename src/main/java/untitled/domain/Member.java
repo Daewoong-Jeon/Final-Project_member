@@ -50,7 +50,7 @@ public class Member {
     public void chargeRentalPoint(
             ChargeRentalPointCommand chargeRentalPointCommand
     ) {
-        //implement business logic here:
+        setRentalPoint(getRentalPoint() + chargeRentalPointCommand.getRentalPoint());
 
         RentalPointCharged rentalPointCharged = new RentalPointCharged(this);
         rentalPointCharged.publishAfterCommit();
